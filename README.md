@@ -66,11 +66,3 @@ The script will print the status of each file as it processes them:
 - `CHANGED: <file_path>`
 - `UNCHANGED: <file_path>`
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Author
-Your Name (or Organization)
-```
-
-This README file provides an overview of the project, installation instructions, usage details, and how the script works, along with an example of interaction.
