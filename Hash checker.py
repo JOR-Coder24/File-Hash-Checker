@@ -16,17 +16,17 @@ def save_hashes(hashes):
     with open(HASH_STORE_FILE, "w") as f:
         json.dump(hashes, f, indent=4)
 
-def calculate_hash(file_path):
-    """Calculate the hash of a file."""
-    hash_algo = hashlib.sha256()
-    try:
-        with open(file_path, "rb") as f:
-            for chunk in iter(lambda: f.read(4096), b""):
-                hash_algo.update(chunk)
-        return hash_algo.hexdigest()
-    except Exception as e:
-        print(f"Error reading file {file_path}: {e}")
-        return None
+def calculate_hash(file_path, algorithm='sha256'):
+    """Compute the hash of a file using the specified algorithm."""
+    hash_func = hashlib.new(algorithm)
+
+    with open(file_path, 'rb') as file:
+        # Read the file in chunks of 8192 bytes
+        while chunk := file.read(8192):
+            hash_func.update(chunk)
+
+    return hash_func.hexdigest()
+
 
 def process_file(file_path, hashes):
     """Process a single file: check if it is new, changed, or unchanged."""
